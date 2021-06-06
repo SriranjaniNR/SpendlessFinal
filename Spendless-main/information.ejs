@@ -1,0 +1,91 @@
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"> </script>     
+    <style>
+     body{
+         background-color: #17a2b8;
+     }
+     label{
+         font-weight: bolder;
+     }
+     #s{
+        font-weight: bolder;
+     }
+     #form{
+        position: absolute;
+        border: 3px solid #000000;
+        top: 30px;
+        right: 600;
+        width:300px;
+        height:300px;
+     }
+     #chart{
+        position: static;
+         
+        top: 500px;
+        right: 100;
+        left:3000;
+        bottom:0;
+       
+     }
+    </style>
+    </head>
+        <script>
+          
+            $("#submit").click(function (e) {
+                e.preventDefault()
+                window.onload = function () {
+             var g=$('#g').val();
+             var f=$('#f').val();
+             var h=$('#h').val();
+             var m=$('#m').val();
+        
+             
+$("#chartContainer").CanvasJSChart(options);
+}})
+     
+        </script>
+        <script>
+            
+    </script>
+    <body id="body">
+    <h1>Information</h1>
+    <% all.forEach(function(item){ %>
+        <p id="s">Name:<p><%= item.name%></p></p>
+        <p id="s">Email: <p><%= item.email %></p></p>
+      
+      
+        <p id="s">MonthName:</p><p><%= item.Month[item.Month.length-1].MonthName %></p>
+        <p id="s">MonthlyIncome:</p><p><%= item.Month[item.Month.length-1].MonthlyIncome %></p>
+        <p id="s">MonthlySavings:</p><p><%= item.Month[item.Month.length-1].MonthlySavings %></p>
+        <p id="s">MonthlyExpenses:</p><p><%= item.Month[item.Month.length-1]. MonthlyExpenses %></p>
+        <% }) %>
+    <br><br>
+    <div id="form">
+        <form  method="POST" action="/username/info">
+         
+            <label>Month:</label>
+            <input type="month" id="start" name="month"
+            min="2020-01" value="2021-6"></input><br><br>
+            <label>MonthlyIncome:</label>
+            <input type="type" name="in"></input><br><br>
+            <label>Monthly Expenses:</label><br><br>
+            
+            <label>Food </label>
+            <input type="text" id="f" name="money[]"></input></span> <br><br>
+            <label>Grocery</label><input type="text" id="g" name="money[]"></input></span> <br><br>
+            <label>Health </label><input type="text" id="h" name="money[]"></input></span> <br><br>
+            <label>Miscellanous</label><input type="text" id="m" name="money[]"></input></span> <br><br>
+            <input id="submit" type ="submit"></input ><br><br>
+            
+        </form>
+        
+    </div>
+    <div id="display">
+        <iframe class="iframe-preview" width="600" height="300" src="/19BCT0165/main"> 
+        </iframe>
+
+    </div>
+</body>

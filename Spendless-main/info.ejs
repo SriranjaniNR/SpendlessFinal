@@ -1,0 +1,51 @@
+<head>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"> </script>  
+</head>
+<script>
+	
+	
+    window.onload = function() {
+		$("#d").hide()
+		var f = parseInt($( "#f" ).text())
+		var h = parseInt($( "#h" ).text())
+		var g = parseInt($( "#g" ).text())
+		var m = parseInt($( "#m" ).text())
+		var n=$( "#n" ).text()
+		var t=f+h+g+m
+		var f=(f/t)*100
+		var h=(h/t)*100
+		var g=(g/t)*100
+		var m=(m/t)*100
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		text: n
+	},
+	data: [{
+		type: "pie",
+		startAngle: 45,
+		yValueFormatString: "##0.00\"%\"",
+		indexLabel: "{label} {y}",
+		dataPoints: [
+			{y: g, label: "Grocery"},
+			{y: h, label: "Health"},
+			{y: m, label: "Miscellanous"},
+			{y: f, label: "Food"}
+			]
+}]});
+chart.render();
+
+}
+        </script>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+	<div id="d">
+	<% all.forEach(function(item){ %>
+		<p id="s">MonthName:</p><p id="n" ><%= item.MonthName %></p>
+        <p id="s">Food:</p><p id="f"><%= item.Food %></p>
+        <p id="s">Grocery:</p><p id="g"><%= item.Grocery %></p>
+        <p id="s">Health:</p><p id="h"><%= item.Health %></p>
+		<p id="s">Miscellanous:</p><p id="m"><%= item.Miscellanous %></p>
+		<% }) %>
+	</div>
